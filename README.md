@@ -19,6 +19,7 @@ Some parameters defined as user defined variables can be changed:
 * DATASET_ID - ID of the dataset for sending data to and querying from
 * SEND_KEY_AUTH - the encoded send key that will be sent in the HTTP request headers. 
     You may use `echo -n 'SEND_KEY' | base64` to get it.
-* USE_BATCH - It can be `true` if you want data to be sent in batch mode, or `false` otherwise 
+* BATCH_SIZE - Number of messages to be sent in one HTTP POST request, can be 1, 5, or 10. 
 * TARGET_RPS - Target requests per second
 * DURATION - Number of seconds for keeping the load at TARGET_RPS
+* THREADS - Number of threads
