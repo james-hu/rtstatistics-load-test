@@ -13,16 +13,6 @@
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="DATASET_ID" elementType="Argument">
-            <stringProp name="Argument.name">DATASET_ID</stringProp>
-            <stringProp name="Argument.value">ZA$mF2hO41z4hHiC_3UUG3h</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="SEND_KEY_AUTH" elementType="Argument">
-            <stringProp name="Argument.name">SEND_KEY_AUTH</stringProp>
-            <stringProp name="Argument.value">aWxIZkNLV0dVbUYxZzVhUnJZX2JmZk9TYi1LOG5aNDg4dnNVUjZzQU5TaEgxdktBWm9za0VjeXlwMnJXQTJ6dThERmJKc0xQWWxJYkRqTk5RVzBBTUE=</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="PARAM_COUNTRY1" elementType="Argument">
             <stringProp name="Argument.name">PARAM_COUNTRY1</stringProp>
             <stringProp name="Argument.value">Australia</stringProp>
@@ -56,6 +46,31 @@
           <elementProp name="PARAM_COUNTRY7" elementType="Argument">
             <stringProp name="Argument.name">PARAM_COUNTRY7</stringProp>
             <stringProp name="Argument.value">Singapore</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DATASET_ID" elementType="Argument">
+            <stringProp name="Argument.name">DATASET_ID</stringProp>
+            <stringProp name="Argument.value">ZA$mF2hO41z4hHiC_3UUG3h</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SEND_KEY_AUTH" elementType="Argument">
+            <stringProp name="Argument.name">SEND_KEY_AUTH</stringProp>
+            <stringProp name="Argument.value">aWxIZkNLV0dVbUYxZzVhUnJZX2JmZk9TYi1LOG5aNDg4dnNVUjZzQU5TaEgxdktBWm9za0VjeXlwMnJXQTJ6dThERmJKc0xQWWxJYkRqTk5RVzBBTUE=</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USE_BATCH" elementType="Argument">
+            <stringProp name="Argument.name">USE_BATCH</stringProp>
+            <stringProp name="Argument.value">true</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TARGET_RPS" elementType="Argument">
+            <stringProp name="Argument.name">TARGET_RPS</stringProp>
+            <stringProp name="Argument.value">600</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DURATION" elementType="Argument">
+            <stringProp name="Argument.name">DURATION</stringProp>
+            <stringProp name="Argument.value">300</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -93,123 +108,94 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </LoopController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request (msg x 1)" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">api.rtstatistics.com</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/datasets/${DATASET_ID}/items</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-          <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
-            <collectionProp name="load_profile">
-              <collectionProp name="1924975626">
-                <stringProp name="53">5</stringProp>
-                <stringProp name="53430">600</stringProp>
-                <stringProp name="48687">120</stringProp>
-              </collectionProp>
-              <collectionProp name="1918985868">
-                <stringProp name="53430">600</stringProp>
-                <stringProp name="53430">600</stringProp>
-                <stringProp name="50547">300</stringProp>
-              </collectionProp>
-              <collectionProp name="1893701803">
-                <stringProp name="53430">600</stringProp>
-                <stringProp name="54391">700</stringProp>
-                <stringProp name="48687">120</stringProp>
-              </collectionProp>
-              <collectionProp name="1919939180">
-                <stringProp name="54391">700</stringProp>
-                <stringProp name="54391">700</stringProp>
-                <stringProp name="50547">300</stringProp>
-              </collectionProp>
-            </collectionProp>
-          </kg.apc.jmeter.timers.VariableThroughputTimer>
-          <hashTree/>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request (msg x 5)" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">[{&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;},&#xd;
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If !USE_BATCH" enabled="true">
+            <stringProp name="IfController.condition">${USE_BATCH} != true</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request (msg x 1)" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">api.rtstatistics.com</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">/datasets/${DATASET_ID}/items</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If USE_BATCH" enabled="true">
+            <stringProp name="IfController.condition">${USE_BATCH} == true</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request (msg x 5)" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">[{&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;},&#xd;
 {&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;},&#xd;
 {&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;},&#xd;
 {&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;},&#xd;
 {&quot;country&quot;:&quot;${__V(PARAM_COUNTRY${__Random(1,7,)})}&quot;,&quot;userId&quot;:&quot;${__RandomString(10, 123456789XYZSLMNACFGHJ)}&quot;,&quot;sku&quot;:&quot;${__RandomString(6, ABCDEFGHJKLMNOPQRSTUVWXYZ3456789)}&quot;,&quot;quantity&quot;:${__RandomString(2, 123456789)},&quot;unitPrice&quot;:${__RandomString(4, 123456789)}, &quot;discount&quot;:0.${__RandomString(2, 0123456789)},&quot;operatorId&quot;:${__RandomString(5, 123456789)}, &quot;feedback&quot;:&quot;${__RandomString(8, goodntba )}&quot;}]</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">api.rtstatistics.com</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/datasets/${DATASET_ID}/items</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">api.rtstatistics.com</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">/datasets/${DATASET_ID}/items</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
           <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
             <collectionProp name="load_profile">
-              <collectionProp name="-326290155">
+              <collectionProp name="1244997903">
                 <stringProp name="53">5</stringProp>
-                <stringProp name="51663">450</stringProp>
+                <stringProp name="1117585919">${TARGET_RPS}</stringProp>
                 <stringProp name="48687">120</stringProp>
               </collectionProp>
-              <collectionProp name="-1402042388">
-                <stringProp name="51663">450</stringProp>
-                <stringProp name="51663">450</stringProp>
-                <stringProp name="50547">300</stringProp>
-              </collectionProp>
-              <collectionProp name="-1393297257">
-                <stringProp name="51663">450</stringProp>
-                <stringProp name="52624">550</stringProp>
-                <stringProp name="48687">120</stringProp>
-              </collectionProp>
-              <collectionProp name="-312154804">
-                <stringProp name="52624">550</stringProp>
-                <stringProp name="52624">550</stringProp>
-                <stringProp name="50547">300</stringProp>
+              <collectionProp name="2134402319">
+                <stringProp name="1117585919">${TARGET_RPS}</stringProp>
+                <stringProp name="1117585919">${TARGET_RPS}</stringProp>
+                <stringProp name="-1798311310">${DURATION}</stringProp>
               </collectionProp>
             </collectionProp>
           </kg.apc.jmeter.timers.VariableThroughputTimer>
